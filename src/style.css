@@ -28,6 +28,29 @@ nav a {
     padding: 30px;
 }
 
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-box input {
+    width: 300px;
+    padding: 10px;
+    border:#ccc 1px solid;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    width: 120px;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 .product-list {
     display: flex;
     justify-content: center;
