@@ -14,7 +14,7 @@
     <nav>
         <a href="#">Trang chủ</a>
         <a href="#">Sản phẩm</a>
-        <a href="#">Giỏ hàng</a>
+        <a href="#cart">Giỏ hàng (<span id="cartCount">0</span>)</a>
         <a href="#">Liên hệ</a>
     </nav>
 </header>
@@ -39,25 +39,39 @@
         <img src="./img/ban-go.png" alt="Bàn gỗ cũ">
         <h3>Bàn gỗ cũ</h3>
         <p>2.500.000đ</p>
-        <button>Mua ngay</button>
+        <button onclick="addToCart('Bàn gỗ cũ', 2500000)">
+            Mua ngay
+        </button>
     </div>
 
     <div class="product" data-name="ghế gỗ cũ">
         <img src="./img/ghe-go.png" alt="Ghế gỗ cũ">
         <h3>Ghế gỗ cũ</h3>
         <p>800.000đ</p>
-        <button>Mua ngay</button>
+        <button onclick="addToCart('Ghế gỗ cũ', 800000)">
+            Mua ngay
+        </button>
     </div>
 
     <div class="product" data-name="tủ gỗ cũ">
         <img src="./img/tu-go.png" alt="Tủ gỗ cũ">
         <h3>Tủ gỗ cũ</h3>
         <p>3.000.000đ</p>
-        <button>Mua ngay</button>
+        <button onclick="addToCart('Tủ gỗ cũ', 3000000)">
+            Mua ngay
+        </button>
 
     </div>
 </div>
 
+</section>
+
+<section class="cart-section" id="cart">
+    <h2>Giỏ hàng</h2>
+
+    <ul id="cartItems"></ul>
+
+    <h3>Tổng tiền <span id="totalPrice">0</span>đ</h3>
 </section>
 
 <footer>
