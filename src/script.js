@@ -1,4 +1,4 @@
-// Tim san pham
+// tìm SP
 let searchInput = document.getElementById('searchInput');
 let products = document.querySelectorAll('.product');
 
@@ -16,7 +16,7 @@ searchInput.addEventListener("keyup", function() {
     });
 });
 
-// gio hang
+// giỏ hàng
 
 let cart = [];
 let total = 0;
@@ -28,18 +28,51 @@ function addToCart(name, price) {
         price: price
     });
 
-    total = total + price;
+    updateCart();
 
-    document.getElementById("cartCount").innerText = cart.length;
+    alert("Đã thêm " + name + " vào giỏ hàng!");
+}
+
+function updateCart() {
 
     let cartItems = document.getElementById("cartItems");
 
-    let li = document.createElement("li");
-    li.innerText = name + " - " + price.toLocaleString() + "đ";
+    cartItems.innerHTML = "";
 
-    cartItems.appendChild(li);
+    total = 0;
+
+    cart.forEach(function(item, index) {
+
+        total += item.price;
+
+        cartItems.innerHTML += `
+
+        <li>
+            #{item.name} - ${item.price.toLocaleString()}đ
+            <button onclick="removeItem(${index})">
+                Xóa
+            </button>
+        </li>
+        `;
+    });
+
+    document.getElementById("cartCount").innerText = cart.length;
 
     document.getElementById("totalPrice").innerText = total.toLocaleString();
 
-    alert("Đã thêm " + name + " vào giỏ hàng!");
+}
+
+function checkout() {
+
+    if(cart.length === 0) {
+        alert("Giỏ hàng đang trống");
+        return;
+    }
+    
+    alert("Thanh toán thành công!");
+
+    cart = [];
+
+    updateCart();
+
 }
