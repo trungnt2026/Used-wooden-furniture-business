@@ -72,16 +72,18 @@
     <ul id="cartItems"></ul>
 
     <h3>Tổng tiền <span id="totalPrice">0</span>đ</h3>
-    <button onclick="checkout()">
-        Thanh toán
-    </button>
-
-    <section id="paymentMethod">
+   
+    <select id="paymentMethod">
         <option value="cod">COD</option>
         <option value="visa/master">Visa/Master</option>
         <option value="momo">Momo</option>
-    </section>
+    </select>
 
+    <br><br>
+
+     <button onclick="checkout()">
+        Thanh toán
+    </button>
 </section>
 
 <footer>
