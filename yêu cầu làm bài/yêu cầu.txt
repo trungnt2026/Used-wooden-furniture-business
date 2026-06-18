@@ -1,0 +1,7 @@
+"- Tìm hiểu ngôn ngữ lập trình PHP, cơ sở dữ liệu MySQL, và một webserver cục bộ để phục vụ quá trình xây dựng và test localhost như wamp/xampp/laragon/...
+- Khảo sát yêu cầu, mô tả bài toán, phân tích hệ thống và đề xuất các mô hình ở mức quan niệm và mức xử lý.
+- Có thể sử dụng một framework phía front-end để phát triển giao diện cho web hoăc thiết kế thủ công bằng HTML, CSS, Javascript.
+- Sử dụng PHP để lập trình phía back-end cho dự án web.
+- Dùng MySQL để lưu trữ cơ sở dữ liệu.
+- Dự án web phải đảm bảo các chức năng cơ bản của một hệ thống bán hàng trực tuyến như quản lý sản phẩm, giỏ hàng, bán hàng/thanh toán, thống kê doanh thu, thống kê kho.
+- Nộp mã nguồn và các nội dung liên quan đến Thực tập đồ án chuyên ngành theo quy định của khóa học."
