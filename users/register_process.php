@@ -1,6 +1,6 @@
 <?php
 
-require_once "config.php";
+require_once "../config.php";
 
 // lấy dữ liệu từ form
 $fullname = trim($_POST["fullname"]);

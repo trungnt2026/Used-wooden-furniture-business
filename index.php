@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include "config.php";
 
 $sql = "SELECT * FROM products";
@@ -28,6 +30,29 @@ $result = mysqli_query($conn, $sql);
             <a href="#">Sản phẩm</a>
             <a href="#cart">Giỏ hàng (<span id="cartCount">0</span>)</a>
             <a href="#">Liên hệ</a>
+
+            <?php if (isset($_SESSION["user_id"])) { ?>
+
+        <span>
+            Xin chào,
+            <?= $_SESSION["fullname"] ?>
+        </span>
+
+        <a href="users/logout.php">
+            Đăng xuất
+        </a>
+
+    <?php } else { ?>
+
+        <a href="users/login.php">
+            Đăng nhập
+        </a>
+
+        <a href="users/register.php">
+            Đăng ký
+        </a>
+
+    <?php } ?>
         </nav>
     </header>
 

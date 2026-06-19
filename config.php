@@ -12,3 +12,6 @@ if (!$conn) {
 }
 
 mysqli_set_charset($conn, "utf8");
+
+//test show
+// echo "Kết nối thành công";
