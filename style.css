@@ -42,23 +42,58 @@ nav span {
 }
 
 .banner {
+  position: relative;
   text-align: center;
   padding: 80px 20px;
-  background-image: url("./img/bg_users_login.avif");
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner::before {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("./img/bg_home_02.png");
+  content: "";
+  opacity: 1;
   background-size: cover;
   background-position: center;
-  color: white;
+  z-index: 1;
+}
+
+.banner > * {
+  position: relative;
+  z-index: 2;
 }
 
 .banner h2 {
-  font-size: 42px;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  font-family: Playfair Display;
+  font-size: 70px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 .banner p {
-  font-size: 20px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  font-family: 'Prata', serif;
+  font-weight: bold;
+  font-size: 35px;
+  font-style: italic;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+  color: #f3c005;
+  margin-top: 5px;
+}
+
+.banner-box {
+  text-align: center;
+  padding: 70px 50px;
+  border-radius: 20px;
+  max-width: 800px;
+  backdrop-filter: blur(3.2px);
 }
 
 .products {
