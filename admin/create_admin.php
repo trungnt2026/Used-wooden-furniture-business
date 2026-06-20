@@ -2,7 +2,7 @@
 session_start();
 include "../config.php";
 
-// BẢO MẬT: Chỉ cho phép tài khoản Admin đã đăng nhập mới được quyền vào trang này để tạo Admin khác
+// chỉ cho phép Adm đã đăng nhập mới được quyền vào trang này để tạo Admin khác
 if (!isset($_SESSION["admin"])) {
     header("Location: login.php");
     exit();
@@ -11,19 +11,19 @@ if (!isset($_SESSION["admin"])) {
 $message = "";
 $status = "";
 
-// Xử lý dữ liệu khi Admin bấm nút "Tạo tài khoản" (Gửi dữ liệu dạng POST)
+// khi Adm bấm tạo acc gửi data dạng post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Lấy dữ liệu từ form và loại bỏ khoảng trắng thừa
+    // loại bỏ khoảng trắng thừa
     $username = trim($_POST["username"]);
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
 
-    // Kiểm tra xem mật khẩu nhập lại có khớp không
+    // check xem mật khẩu nhập lại khớp không
     if ($password !== $confirm_password) {
         $status = "danger";
         $message = "<strong>Thất bại:</strong> Mật khẩu nhập lại không khớp. Vui lòng kiểm tra lại!";
     } else {
-        // Mã hóa mật khẩu bảo mật giống như cũ
+        // hash bảo mật pass
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO admins(username, password) VALUES('$username', '$hashed_password')";

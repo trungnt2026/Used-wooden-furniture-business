@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../config.php";
+require_once "../../config.php";
 
 if (!isset($_SESSION["admin"])) {
     header("Location: login.php");
@@ -39,6 +39,36 @@ $result = mysqli_query($conn, $sql);
                     </tr>
                 </thead>
                 <tbody>
+                    
+                        <?php 
+                        // khai báo biến đếm
+                        $count = 1; 
+                        while ($row = mysqli_fetch_assoc($result)) { 
+                        ?> 
+                            <tr>
+                                <td class="fw-bold">#<?= $count ?></td> 
+                                
+                                <td><?= $row["name"] ?></td>
+                                <td class="text-danger fw-bold"><?= number_format($row["price"]) ?> đ</td>
+
+                                <td>
+                                    <img src="../../img/<?= $row["image"] ?>" alt="Sản phẩm" class="img-thumbnail" style="max-height: 60px;">
+                                </td>
+
+                                <td>
+                                    <a href="edit_product.php?id=<?= $row["id"] ?>" class="btn btn-sm btn-warning me-2">Sửa</a>
+                                    <a href="delete_product.php?id=<?= $row["id"] ?>"
+                                        class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">
+                                        Xóa
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php 
+                            // Tăng biến đếm sau mỗi vòng
+                            $count++; 
+                        } 
+                        ?>
                     <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                         <tr>
                             <td class="fw-bold">#<?= $row["id"] ?></td>
@@ -46,7 +76,7 @@ $result = mysqli_query($conn, $sql);
                             <td class="text-danger fw-bold"><?= number_format($row["price"]) ?> đ</td>
 
                             <td>
-                                <img src="../img/<?= $row["image"] ?>" alt="Sản phẩm" class="img-thumbnail" style="max-height: 60px;">
+                                <img src="../../img/<?= $row["image"] ?>" alt="Sản phẩm" class="img-thumbnail" style="max-height: 60px;">
                             </td>
 
                             <td>
@@ -66,7 +96,7 @@ $result = mysqli_query($conn, $sql);
         </div>
 
         <div class="mt-4">
-            <a href="dashboard.php" class="btn btn-outline-secondary">
+            <a href="../dashboard.php" class="btn btn-outline-secondary">
                 ← Quay lại Dashboard
             </a>
         </div>

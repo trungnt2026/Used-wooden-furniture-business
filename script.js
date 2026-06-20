@@ -26,15 +26,11 @@ function saveCart() {
 }
 
 function addToCart(name, price) {
-  cart.push({
-    name: name,
-    price: price,
-  });
-
+  cart.push({ name: name, price: price });
   saveCart();
   updateCart();
 
-  alert("Đã thêm " + name + " vào giỏ hàng!");
+  alert("Đã thêm " + name + " vào giỏ!");
 }
 
 function updateCart() {
@@ -42,30 +38,33 @@ function updateCart() {
   let cartCount = document.getElementById("cartCount");
   let totalPrice = document.getElementById("totalPrice");
 
-  cartItems.innerHTML = "";
-  total = 0;
-
-  if (cart.length === 0) {
-    cartItems.innerHTML = "<li>Giỏ hàng đang trống.</li>";
-  } else {
-    cart.forEach(function (item, index) {
-      total += item.price;
-
-      cartItems.innerHTML += `
-
-        <li>
-            ${item.name} - ${item.price.toLocaleString()}đ
-            <button onclick="removeItem(${index})">
-                Xóa
-            </button>
-        </li>
-        `;
-    });
+  if (cartCount) {
+    cartCount.innerText = cart.length;
   }
 
-  cartCount.innerText = cart.length;
-  totalPrice.innerText = total.toLocaleString();
+  if (cartItems) {
+    cartItems.innerHTML = "";
+    total = 0;
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = "<li>Giỏ hàng trống.</li>";
+    } else {
+      cart.forEach(function (item, index) {
+        total += item.price;
+        cartItems.innerHTML += `<li>
+        ${item.name} - ${item.price.toLocaleString()}đ
+        <button onclick="removeItem(${index})">Xóa</button>      
+      </li>`;
+      });
+    }
+  }
+
+  if (totalPrice) {
+    totalPrice.innerText = total.toLocaleString();
+  }
 }
+
+updateCart();
 
 function removeItem(index) {
   cart.splice(index, 1);
@@ -94,4 +93,13 @@ function checkout() {
   updateCart();
 }
 
-updateCart();
+// Thay vì gọi updateCart() trực tiếp ở dưới cùng, hãy bọc nó lại
+document.addEventListener("DOMContentLoaded", function () {
+  // Chỉ gọi updateCart nếu các phần tử cần thiết tồn tại trên trang
+  if (
+    document.getElementById("cartItems") ||
+    document.getElementById("cartCount")
+  ) {
+    updateCart();
+  }
+});

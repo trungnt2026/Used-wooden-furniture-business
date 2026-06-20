@@ -38,7 +38,7 @@ if (!isset($_SESSION["admin"])) {
                         </div>
                         <h4 class="card-title fw-bold">Thêm Sản Phẩm</h4>
                         <p class="card-text text-muted">Đăng bán các sản phẩm gỗ cũ, bàn ghế mỹ nghệ mới lên hệ thống cửa hàng.</p>
-                        <a href="add_product.php" class="btn btn-success px-4 mt-2">
+                        <a href="products/add_product.php" class="btn btn-success px-4 mt-2">
                             Vào Thêm Ngay
                         </a>
                     </div>
@@ -53,7 +53,7 @@ if (!isset($_SESSION["admin"])) {
                         </div>
                         <h4 class="card-title fw-bold">Quản Lý Danh Sách</h4>
                         <p class="card-text text-muted">Xem toàn bộ sản phẩm gỗ hiện có, thực hiện cập nhật giá, chỉnh sửa hoặc xóa bỏ.</p>
-                        <a href="manage_products.php" class="btn btn-primary px-4 mt-2">
+                        <a href="products/manage_products.php" class="btn btn-primary px-4 mt-2">
                             Vào Quản Lý
                         </a>
                     </div>

@@ -13,6 +13,7 @@ $result = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ĐỒ GỖ 2HAND</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -22,7 +23,10 @@ $result = mysqli_query($conn, $sql);
         <nav>
             <a href="#">Trang chủ</a>
             <a href="#">Sản phẩm</a>
-            <a href="#cart">Giỏ hàng (<span id="cartCount">0</span>)</a>
+            <a href="cart.php" class="cart-link">
+                <i class="bi bi-cart4"></i>
+                Giỏ hàng (<span id="cartCount">0</span>)
+            </a>
             <a href="#">Liên hệ</a>
 
             <?php if (isset($_SESSION["user_id"])) { ?>

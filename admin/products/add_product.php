@@ -17,7 +17,7 @@ if (!isset($_SESSION["admin"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <style>
-        /* Định nghĩa màu nâu gỗ */
+        /* thêm màu nâu gỗ */
         .btn-wood {
             background-color: #7A4A21;
             border-color: #7A4A21;
@@ -43,7 +43,7 @@ if (!isset($_SESSION["admin"])) {
             <div class="col-md-8 col-lg-6">
 
                 <div class="mb-3">
-                    <a href="dashboard.php" class="text-decoration-none text-secondary small">
+                    <a href="../dashboard.php" class="text-decoration-none text-secondary small">
                         <i class="bi bi-arrow-left"></i> Quay lại Dashboard
                     </a>
                 </div>

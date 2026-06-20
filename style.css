@@ -54,7 +54,10 @@ nav span {
 
 .banner::before {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url("./img/bg_home_02.png");
   content: "";
   opacity: 1;
@@ -79,7 +82,7 @@ nav span {
 }
 
 .banner p {
-  font-family: 'Prata', serif;
+  font-family: "Prata", serif;
   font-weight: bold;
   font-size: 35px;
   font-style: italic;
@@ -182,4 +185,16 @@ footer {
 #cartItems li {
   margin: 10px;
   font-weight: bold;
+}
+
+.cart-link {
+  text-decoration: none;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cart-link i {
+  margin-right: 5px;
+  font-size: 1.2rem;
 }
