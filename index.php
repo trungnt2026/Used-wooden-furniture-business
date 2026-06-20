@@ -18,6 +18,31 @@ $result = mysqli_query($conn, $sql);
 
 <body>
 
+    <div id="realtimeClock"
+        style="position: fixed; top: 10px; left: 10px; padding: 8px; background: #33d41e; 
+                color: white; border-radius: 8px; z-index: 9999; font-size: 18px; 
+                font-weight: bold; font-family: sans-serif; pointer-events: none;">
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            // Định dạng ngày giờ chuẩn Việt Nam
+            const options = {
+                weekday: 'short',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
+        }
+        // Chạy ngay khi load
+        updateClock();
+        // Cập nhật mỗi giây
+        setInterval(updateClock, 1000);
+    </script>
     <header>
         <h1>ĐỒ GỖ 2HAND</h1>
         <nav>
@@ -27,7 +52,7 @@ $result = mysqli_query($conn, $sql);
                 <i class="bi bi-cart4"></i>
                 Giỏ hàng (<span id="cartCount">0</span>)
             </a>
-            <a href="#">Liên hệ</a>
+            <a href="contact.php">Liên hệ</a>
 
             <?php if (isset($_SESSION["user_id"])) { ?>
                 <span>
