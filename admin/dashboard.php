@@ -60,6 +60,26 @@ if (!isset($_SESSION["admin"])) {
                 </div>
             </div>
 
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-4 text-center">
+                        <i class="bi bi-people" style="font-size: 2rem; color: #392ed6;"></i>
+                        <h4 class="mt-2">Danh sách Users</h4>
+                        <p class="text-muted">Quản lý tài khoản khách hàng, xem thông tin người đăng ký.</p>
+                        <a href="list_users.php" class="btn btn-primary">Vào Quản lý</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-4 text-center">
+                        <i class="bi bi-shield-lock" style="font-size: 2rem; color: #dc3545;"></i>
+                        <h4 class="mt-2">Danh sách Admin</h4>
+                        <p class="text-muted">Quản lý quyền truy cập của quản trị viên hệ thống.</p>
+                        <a href="list_admins.php" class="btn btn-danger">Vào Quản lý</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="text-center text-muted mt-5 pt-4 border-top style=" font-size: 14px;">

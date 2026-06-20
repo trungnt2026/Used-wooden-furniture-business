@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $sql);
     <script>
         function updateClock() {
             const now = new Date();
-            // Định dạng ngày giờ chuẩn Việt Nam
+
             const options = {
                 weekday: 'short',
                 day: '2-digit',
@@ -38,7 +38,7 @@ $result = mysqli_query($conn, $sql);
             };
             document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
         }
-        // Chạy ngay khi load
+
         updateClock();
         // Cập nhật mỗi giây
         setInterval(updateClock, 1000);
@@ -72,6 +72,8 @@ $result = mysqli_query($conn, $sql);
                 <a href="users/register.php">
                     Đăng ký
                 </a>
+
+                <a href="admin/login.php">Quản trị viên</a>
             <?php } ?>
         </nav>
     </header>

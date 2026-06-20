@@ -120,8 +120,8 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                 </div>
 
-                <div class="text-center text-muted mt-4 mb-5" style="font-size: 13px;">
-                    Hệ thống quản lý kho đồ gỗ 2Hand.
+                <div class="text-center text-muted mt-4 mb-5" style="font-size: 15px; font-weight: bold">
+                    Hệ thống quản lý kho ĐỒ GỖ 2HAND.
                 </div>
 
             </div>

@@ -18,8 +18,42 @@ session_start();
             justify-content: center;
             align-items: center;
         }
+
+        .toggle-password {
+            position: absolute;
+            right: 25px;
+            top: 10px;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            font-size: 18px;
+            z-index: 10;
+        }
+
+        .form-control {
+            padding-right: 40px !important;
+        }
     </style>
 </head>
+
+
+<script>
+    function togglePassword() {
+
+        const passwordField = document.querySelector('input[name="password"]');
+        const toggleIcon = document.querySelector('.toggle-password');
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text"; // Hiển thị mật khẩu
+            toggleIcon.innerText = "👁️‍🗨️"; // Đổi icon sang dạng mắt bị gạch (tùy chọn)
+        } else {
+            passwordField.type = "password";
+            toggleIcon.innerText = "👁️";
+        }
+    }
+</script>
 
 <body class="bg-light">
     <div class="container">
@@ -78,6 +112,10 @@ session_start();
                                         name="password"
                                         placeholder="Nhập mật khẩu..."
                                         required>
+
+                                    <span class="toggle-password" onclick="togglePassword()">
+                                        👁️
+                                    </span>
                                 </div>
                             </div>
 
