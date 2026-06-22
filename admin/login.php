@@ -17,6 +17,22 @@ session_start();
             display: flex;
             justify-content: center;
             align-items: center;
+            background-image: url("../img/bg_admin.jpg");
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("../img/bg_admin.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: blur(2px);
+            z-index: -1;
+            transform: scale(1.1);
         }
 
         .toggle-password {
@@ -68,7 +84,7 @@ session_start();
                                 <i class="bi bi-person-circle"></i>
                             </div>
                             <h3 class="fw-bold text-dark m-0">Đăng Nhập Admin</h3>
-                            <small class="text-muted">Hệ thống quản lý - Đồ Gỗ 2Hand</small>
+                            <small class="text-muted" style="color: var(--wood-medium); font-weight:bolder">Hệ thống quản lý - Đồ Gỗ 2Hand</small>
                         </div>
 
                         <?php if (isset($_SESSION["login_error"])) { ?>
@@ -124,15 +140,15 @@ session_start();
                             </button>
 
                         </form>
-
+                        <div class="text-center mt-3">
+                            <a href="../index.php" class="text-decoration-none text-muted small" style="color: var(--wood-medium); font-weight:bolder">
+                                ← Quay lại Trang Chủ Cửa Hàng
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="text-center mt-3">
-                    <a href="../index.php" class="text-decoration-none text-muted small">
-                        ← Quay lại Trang Chủ Cửa Hàng
-                    </a>
-                </div>
+
 
             </div>
         </div>

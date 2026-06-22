@@ -18,6 +18,13 @@ $result = mysqli_query($conn, $sql);
 
 <body>
 
+    <div class="top-banner">
+        <div class="banner-content">
+            <span><i class="bi bi-telephone-forward-fill"></i> Mua hàng & CSKH: <strong>1900.8888</strong> (Free)</span>
+            <span><i class="bi bi-geo-alt-fill" style="font-weight: bold; color: brown"></i> Tìm Siêu Thị</span>
+            <span><i class="bi bi-person-circle"></i> Tài khoản</span>
+        </div>
+    </div>
     <div id="realtimeClock"
         style="position: fixed; top: 10px; left: 10px; padding: 8px; background: #33d41e; 
                 color: white; border-radius: 8px; z-index: 9999; font-size: 18px; 
@@ -42,12 +49,91 @@ $result = mysqli_query($conn, $sql);
         updateClock();
         // Cập nhật mỗi giây
         setInterval(updateClock, 1000);
+
+        // tạo nút scroll to top nếu kéo quá sâu xuống dưới
+        let mybutton = document.getElementById("backToTopBtn");
+
+        // Khi người dùng cuộn xuống 200px từ đỉnh trang, hiện nút
+        window.onscroll = function() {
+            let mybutton = document.getElementById("backToTopBtn");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                mybutton.style.display = "flex";
+            } else {
+                mybutton.style.display = "none";
+            }
+        };
+
+        // Khi người dùng bấm nút, quay về đầu trang
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Cuộn mượt mà
+            });
+        }
     </script>
+
+    <style>
+        .btn-scroll-top {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 60px !important;
+            /* Chiều cao nút */
+            z-index: 9999 !important;
+            /* Xóa bỏ mọi thuộc tính transform, transition gây nhảy */
+            transform: none !important;
+            transition: background-color 0.3s ease !important;
+        }
+
+        .btn-scroll-top:hover {
+            background-color: #442e28;
+            /* Màu đậm hơn khi di chuột vào */
+        }
+
+        /* Tùy chỉnh icon và chữ */
+        .btn-scroll-top i {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            /* Chiều cao cố định */
+            background-color: #5D4037;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            z-index: 999;
+            /* Luôn nằm trên footer */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-scroll-top span {
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+
+        footer {
+            padding-bottom: 60px;
+            /* Bằng chiều cao của nút + một chút dư */
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+
     <header>
         <h1>ĐỒ GỖ 2HAND</h1>
         <nav>
             <a href="#">Trang chủ</a>
-            <a href="#">Sản phẩm</a>
+            <a href="products.php">Sản phẩm</a>
             <a href="cart.php" class="cart-link">
                 <i class="bi bi-cart4"></i>
                 Giỏ hàng (<span id="cartCount">0</span>)
@@ -132,11 +218,47 @@ $result = mysqli_query($conn, $sql);
         </button>
     </section>
 
-    <footer>
-        <p>© 2026 ĐỒ GỖ 2HAND</p>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>ĐỒ GỖ 2HAND</h3>
+                <p><strong>Địa chỉ:</strong> Quận 7, TP. Hồ Chí Minh</p>
+                <p><i class="bi bi-telephone-inbound-fill"></i><strong> Hotline:</strong> 1900.8888</p>
+                <p><i class="bi bi-envelope-at-fill"></i><strong> Email:</strong> admin@org.json</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Hỗ Trợ Khách Hàng</h3>
+                <ul>
+                    <li><a href="look_up_orders.php">Tra cứu đơn hàng</a></li>
+                    <li><a href="buying_guide.php">Hướng dẫn mua hàng</a></li>
+                    <li><a href="warranty_policy.php">Chính sách bảo hành</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Chấp Nhận Thanh Toán</h3>
+                <div class="payment-methods">
+                    <img src="img/visa.png" alt="Visa" title="Visa/Mastercard">
+                    <img src="img/momo.png" alt="Momo" title="Momo">
+                    <img src="img/COD.png" alt="COD" title="COD">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>
+                <Strong>© 2026 ĐỒ GỖ 2HAND - Hệ thống nội thất gỗ cũ giá tốt</Strong>
+            </span>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn-scroll-top" title="Về đầu trang">
+        <i class="bi bi-arrow-up-circle-fill"></i>
+        <span class="d-block small fw-bold">Lên đầu</span>
+    </button>
 </body>
 
 </html>

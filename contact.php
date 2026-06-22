@@ -14,15 +14,29 @@
         }
 
         body {
-            /* CHÈN BACKGROUND VÀO ĐÂY */
-            background-image: url('path/to/your-wood-background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            margin: 0;
             min-height: 100vh;
             display: flex;
+            justify-content: center;
             align-items: center;
+            background-image: url("img/hop-tac.jpg");
+            overflow-x: hidden;
+            position: relative;
         }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: blur(3px);
+            background-repeat: repeat;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            z-index: -1;
+        }
+
 
         .contact-box {
             background-color: rgba(255, 255, 255, 0.95);
@@ -30,6 +44,7 @@
             padding: 40px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border-left: 10px solid var(--wood-dark);
+            align-items: center;
         }
 
         h2 {
@@ -55,6 +70,25 @@
         .btn-custom:hover {
             background-color: var(--wood-medium);
             color: white;
+        }
+
+        .form-check-input {
+            border: 2px solid var(--wood-dark);
+            /* Tăng độ dày viền lên 2px */
+            width: 1.2em;
+            /* tăng kích thước radio */
+            height: 1.2em;
+            cursor: pointer;
+        }
+
+        /* Làm nổi bật ô input khi bị lỗi */
+        .form-control:invalid {
+            border: 2px solid #dc3545;
+        }
+
+        /* Tùy chỉnh thông báo lỗi của trình duyệt */
+        .form-control:invalid:focus {
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
         }
     </style>
 </head>
@@ -116,7 +150,7 @@
                     </form>
 
                     <div class="mt-3 text-center">
-                        <a href="index.php" class="text-decoration-none" style="color: var(--wood-medium);">Quay lại trang chủ</a>
+                        <a href="index.php" class="text-decoration-none" style="color: var(--wood-medium); font-weight:bolder">← Quay lại trang chủ</a>
                     </div>
                 </div>
             </div>
