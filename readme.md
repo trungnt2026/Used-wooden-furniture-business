@@ -6,4 +6,4 @@
 3. Truy cập `http://localhost/phpmyadmin`, tạo một database mới.
 4. Import file `.sql` (nằm trong thư mục database của repo này) vào database vừa tạo.
 5. Cấu hình lại file `config.php` nếu có thay đổi về username/password của MySQL.
-6. Mở trình duyệt và truy cập: `http://localhost/do_go_2hand`.
+6. Mở trình duyệt và truy cập: `http://localhost/do_go_2hand`
