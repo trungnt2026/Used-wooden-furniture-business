@@ -25,108 +25,107 @@ $result = mysqli_query($conn, $sql);
             <span><i class="bi bi-person-circle"></i> Tài khoản</span>
         </div>
     </div>
-    <div id="realtimeClock"
-        style="position: fixed; top: 10px; left: 10px; padding: 8px; background: #33d41e; 
+    <div id="realtimeClock" style="position: fixed; top: 10px; left: 10px; padding: 8px; background: #33d41e; 
                 color: white; border-radius: 8px; z-index: 9999; font-size: 18px; 
                 font-weight: bold; font-family: sans-serif; pointer-events: none;">
     </div>
     <script>
-        function updateClock() {
-            const now = new Date();
+    function updateClock() {
+        const now = new Date();
 
-            const options = {
-                weekday: 'short',
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
-        }
-
-        updateClock();
-        // Cập nhật mỗi giây
-        setInterval(updateClock, 1000);
-
-        // tạo nút scroll to top nếu kéo quá sâu xuống dưới
-        let mybutton = document.getElementById("backToTopBtn");
-
-        // Khi người dùng cuộn xuống 200px từ đỉnh trang, hiện nút
-        window.onscroll = function() {
-            let mybutton = document.getElementById("backToTopBtn");
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                mybutton.style.display = "flex";
-            } else {
-                mybutton.style.display = "none";
-            }
+        const options = {
+            weekday: 'short',
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
         };
+        document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
+    }
 
-        // Khi người dùng bấm nút, quay về đầu trang
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Cuộn mượt mà
-            });
+    updateClock();
+    // Cập nhật mỗi giây
+    setInterval(updateClock, 1000);
+
+    // tạo nút scroll to top nếu kéo quá sâu xuống dưới
+    let mybutton = document.getElementById("backToTopBtn");
+
+    // Khi người dùng cuộn xuống 200px từ đỉnh trang, hiện nút
+    window.onscroll = function() {
+        let mybutton = document.getElementById("backToTopBtn");
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            mybutton.style.display = "flex";
+        } else {
+            mybutton.style.display = "none";
         }
+    };
+
+    // Khi người dùng bấm nút, quay về đầu trang
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Cuộn mượt mà
+        });
+    }
     </script>
 
     <style>
-        .btn-scroll-top {
-            position: fixed !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 60px !important;
-            /* Chiều cao nút */
-            z-index: 9999 !important;
-            /* Xóa bỏ mọi thuộc tính transform, transition gây nhảy */
-            transform: none !important;
-            transition: background-color 0.3s ease !important;
-        }
+    .btn-scroll-top {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 60px !important;
+        /* Chiều cao nút */
+        z-index: 9999 !important;
+        /* Xóa bỏ mọi thuộc tính transform, transition gây nhảy */
+        transform: none !important;
+        transition: background-color 0.3s ease !important;
+    }
 
-        .btn-scroll-top:hover {
-            background-color: #442e28;
-            /* Màu đậm hơn khi di chuột vào */
-        }
+    .btn-scroll-top:hover {
+        background-color: #442e28;
+        /* Màu đậm hơn khi di chuột vào */
+    }
 
-        /* Tùy chỉnh icon và chữ */
-        .btn-scroll-top i {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            /* Chiều cao cố định */
-            background-color: #5D4037;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            z-index: 999;
-            /* Luôn nằm trên footer */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background-color 0.3s ease;
-        }
+    /* Tùy chỉnh icon và chữ */
+    .btn-scroll-top i {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        /* Chiều cao cố định */
+        background-color: #5D4037;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        z-index: 999;
+        /* Luôn nằm trên footer */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transition: background-color 0.3s ease;
+    }
 
-        .btn-scroll-top span {
-            font-size: 16px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+    .btn-scroll-top span {
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
 
-        footer {
-            padding-bottom: 60px;
-            /* Bằng chiều cao của nút + một chút dư */
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
+    footer {
+        padding-bottom: 60px;
+        /* Bằng chiều cao của nút + một chút dư */
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
     </style>
 
     <header>
@@ -139,27 +138,29 @@ $result = mysqli_query($conn, $sql);
                 Giỏ hàng (<span id="cartCount">0</span>)
             </a>
             <a href="contact.php">Liên hệ</a>
+            <a href="admin/login.php">Quản trị viên</a>
+            <a href="about_us.php">Về chúng tôi</a>
+
 
             <?php if (isset($_SESSION["user_id"])) { ?>
-                <span>
-                    Xin chào,
-                    <?= $_SESSION["fullname"] ?>
-                </span>
+            <span>
+                Xin chào,
+                <?= $_SESSION["fullname"] ?>
+            </span>
 
-                <a href="users/logout.php">
-                    Đăng xuất
-                </a>
+            <a href="users/logout.php">
+                Đăng xuất
+            </a>
 
             <?php } else { ?>
-                <a href="users/login.php">
-                    Đăng nhập
-                </a>
+            <a href="users/login.php">
+                Đăng nhập
+            </a>
 
-                <a href="users/register.php">
-                    Đăng ký
-                </a>
+            <a href="users/register.php">
+                Đăng ký
+            </a>
 
-                <a href="admin/login.php">Quản trị viên</a>
             <?php } ?>
         </nav>
     </header>
@@ -181,41 +182,24 @@ $result = mysqli_query($conn, $sql);
 
         <div class="product-list">
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="product"
-                    data-name="<?= strtolower($row['name']) ?>">
-                    <img src="./img/<?= $row['image'] ?>"
-                        alt="<?= $row['name'] ?>">
-                    <h3>
-                        <?= $row['name'] ?>
-                    </h3>
-                    <p>
-                        <?= number_format($row['price']) ?>đ
-                    </p>
-                    <button
-                        onclick="addToCart(
+            <div class="product" data-name="<?= strtolower($row['name']) ?>">
+                <img src="./img/<?= $row['image'] ?>" alt="<?= $row['name'] ?>">
+                <h3>
+                    <?= $row['name'] ?>
+                </h3>
+                <p>
+                    <?= number_format($row['price']) ?>đ
+                </p>
+                <button onclick="addToCart(
                 '<?= $row['name'] ?>',
-                <?= $row['price'] ?>
+                <?= $row['price'] ?>,
+                './img/<?=$row['image'] ?>'
             )">
-                        Mua ngay
-                    </button>
-                </div>
+                    Mua ngay
+                </button>
+            </div>
             <?php } ?>
         </div>
-    </section>
-
-    <section class="cart-section" id="cart">
-        <h2>Giỏ hàng</h2>
-        <ul id="cartItems"></ul>
-        <h3>Tổng tiền <span id="totalPrice">0</span>đ</h3>
-        <select id="paymentMethod">
-            <option value="cod">COD</option>
-            <option value="visa/master">Visa/Master</option>
-            <option value="momo">Momo</option>
-        </select>
-        <br><br>
-        <button onclick="checkout()">
-            Thanh toán
-        </button>
     </section>
 
     <footer class="main-footer">
