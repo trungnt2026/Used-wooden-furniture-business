@@ -6,7 +6,7 @@ if (!isset($_SESSION["admin"])) {
 }
 
 // Gọi file kết nối database (kiểm tra lại đường dẫn chính xác của bạn)
-include "../config.php"; 
+include "../config.php";
 
 // --- XỬ LÝ DỮ LIỆU BACK-END CHO THỐNG KÊ ---
 
@@ -22,8 +22,8 @@ $result_total_stock = mysqli_query($conn, $sql_total_stock);
 $row_total_stock = mysqli_fetch_assoc($result_total_stock);
 
 
-// 2. Thống kê Doanh Thu: Giả định bạn đã có hoặc sẽ làm bảng orders (đơn hàng)
-// Nếu chưa có, hệ thống sẽ tự dùng số liệu mô phỏng để khi demo với giảng viên biểu đồ vẫn hiển thị đẹp.
+// // 2. Thống kê Doanh Thu: bắt buộc phải bảng orders (đơn hàng) trong SQL code mới chạy
+// // Nếu chưa có, hệ thống sẽ tự dùng số liệu mô phỏng để khi demo biểu đồ vẫn hiển thị đẹp.
 $sql_revenue = "SELECT SUM(total_price) as total_money FROM orders WHERE status = 'completed'";
 $result_revenue = mysqli_query($conn, $sql_revenue);
 $total_revenue = 0;
@@ -47,18 +47,18 @@ $revenue_data = [15000000, 22000000, 18000000, 25000000, 30000000, 42000000]; //
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-    .card-stat {
-        transition: transform 0.2s;
-        border: none;
-    }
+        .card-stat {
+            transition: transform 0.2s;
+            border: none;
+        }
 
-    .card-stat:hover {
-        transform: translateY(-3px);
-    }
+        .card-stat:hover {
+            transform: translateY(-3px);
+        }
 
-    .text-wood {
-        color: #5D4037;
-    }
+        .text-wood {
+            color: #5D4037;
+        }
     </style>
 </head>
 
@@ -214,38 +214,38 @@ $revenue_data = [15000000, 22000000, 18000000, 25000000, 30000000, 42000000]; //
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
-                                    if($result_stock && mysqli_num_rows($result_stock) > 0) {
-                                        while($row = mysqli_fetch_assoc($result_stock)) { 
+                                    <?php
+                                    if ($result_stock && mysqli_num_rows($result_stock) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result_stock)) {
                                             $qty = $row['quantity'];
                                             $badge = $qty <= 3 ? '<span class="badge bg-danger">Nguy cấp</span>' : '<span class="badge bg-warning text-dark">Sắp hết</span>';
                                     ?>
-                                    <tr>
-                                        <td class="fw-semibold text-truncate" style="max-width: 180px;">
-                                            <?= $row['name'] ?></td>
-                                        <td class="text-center fw-bold text-danger"><?= $qty ?></td>
-                                        <td><?= $badge ?></td>
-                                    </tr>
-                                    <?php 
+                                            <tr>
+                                                <td class="fw-semibold text-truncate" style="max-width: 180px;">
+                                                    <?= $row['name'] ?></td>
+                                                <td class="text-center fw-bold text-danger"><?= $qty ?></td>
+                                                <td><?= $badge ?></td>
+                                            </tr>
+                                        <?php
                                         }
-                                    } else { 
+                                    } else {
                                         // Dữ liệu hiển thị sơ cua phòng trường hợp database chưa cập nhật kịp cột quantity
-                                    ?>
-                                    <tr>
-                                        <td>Tủ quần áo gỗ xoan đào 3 cánh</td>
-                                        <td class="text-center fw-bold text-danger">2</td>
-                                        <td><span class="badge bg-danger">Nguy cấp</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bàn ăn gỗ sồi 6 ghế cũ</td>
-                                        <td class="text-center fw-bold text-danger">3</td>
-                                        <td><span class="badge bg-danger">Nguy cấp</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kệ tivi gỗ thông secondhand</td>
-                                        <td class="text-center fw-bold text-warning text-dark">5</td>
-                                        <td><span class="badge bg-warning text-dark">Sắp hết</span></td>
-                                    </tr>
+                                        ?>
+                                        <tr>
+                                            <td>Tủ quần áo gỗ xoan đào 3 cánh</td>
+                                            <td class="text-center fw-bold text-danger">2</td>
+                                            <td><span class="badge bg-danger">Nguy cấp</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bàn ăn gỗ sồi 6 ghế cũ</td>
+                                            <td class="text-center fw-bold text-danger">3</td>
+                                            <td><span class="badge bg-danger">Nguy cấp</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kệ tivi gỗ thông secondhand</td>
+                                            <td class="text-center fw-bold text-warning text-dark">5</td>
+                                            <td><span class="badge bg-warning text-dark">Sắp hết</span></td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
@@ -261,36 +261,36 @@ $revenue_data = [15000000, 22000000, 18000000, 25000000, 30000000, 42000000]; //
     </div>
 
     <script>
-    const ctx = document.getElementById('revenueChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: <?= json_encode($months) ?>,
-            datasets: [{
-                label: 'Doanh thu (VNĐ)',
-                data: <?= json_encode($revenue_data) ?>,
-                backgroundColor: 'rgba(139, 69, 19, 0.15)',
-                borderColor: 'rgba(139, 69, 19, 1)',
-                borderWidth: 3,
-                tension: 0.3,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return value.toLocaleString('vi-VN') + 'đ';
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: <?= json_encode($months) ?>,
+                datasets: [{
+                    label: 'Doanh thu (VNĐ)',
+                    data: <?= json_encode($revenue_data) ?>,
+                    backgroundColor: 'rgba(139, 69, 19, 0.15)',
+                    borderColor: 'rgba(139, 69, 19, 1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString('vi-VN') + 'đ';
+                            }
                         }
                     }
                 }
             }
-        }
-    });
+        });
     </script>
 </body>
 
