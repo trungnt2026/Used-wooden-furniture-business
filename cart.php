@@ -101,12 +101,18 @@
     <script src="script.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // Gọi hàm hiển thị giao diện giỏ hàng ngay khi trang tải xong
         if (typeof updateCart === 'function') {
             updateCart();
         }
     });
 
     function checkout(event) {
+        if (cart.length === 0) {
+            event.preventDefault();
+            alert("Giỏ hàng của bạn đang trống!");
+            return;
+        }
         if (typeof window.checkoutLogic === 'function') {
             window.checkoutLogic();
         }

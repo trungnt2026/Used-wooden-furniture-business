@@ -21,8 +21,12 @@ $result = mysqli_query($conn, $sql);
     <div class="top-banner">
         <div class="banner-content">
             <span><i class="bi bi-telephone-forward-fill"></i> Mua hàng & CSKH: <strong>1900.8888</strong> (Free)</span>
-            <span><i class="bi bi-geo-alt-fill" style="font-weight: bold; color: brown"></i> Tìm Siêu Thị</span>
-            <span><i class="bi bi-person-circle"></i> Tài khoản</span>
+            <a href="find_store.php" class="text-decoration-none banner-link" style="color: #6c757d;">
+                <span><i class="bi bi-geo-alt-fill" style="font-weight: bold; color: brown"></i> Tìm Siêu Thị</span>
+            </a>
+            <a href="account.php" class="text-decoration-none banner-link" style="color: #6c757d;">
+                <span><i class="bi bi-person-circle"></i> Tài khoản</span>
+            </a>
         </div>
     </div>
     <div id="realtimeClock" style="position: fixed; top: 10px; left: 10px; padding: 8px; background: #33d41e; 

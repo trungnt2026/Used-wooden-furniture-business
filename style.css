@@ -328,3 +328,10 @@ footer {
   border-radius: 4px;
   border: 1px solid #eee;
 }
+
+/* Ép tất cả các thẻ liên kết trong thanh banner trên cùng không được gạch chân */
+.top-banner a,
+.top-banner a:hover,
+.top-banner a span {
+  text-decoration: none !important;
+}

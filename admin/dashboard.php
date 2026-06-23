@@ -37,7 +37,8 @@ if (!isset($_SESSION["admin"])) {
                             <i class="bi bi-plus-circle-fill"></i>
                         </div>
                         <h4 class="card-title fw-bold">Thêm Sản Phẩm</h4>
-                        <p class="card-text text-muted">Đăng bán các sản phẩm gỗ cũ, bàn ghế mỹ nghệ mới lên hệ thống cửa hàng.</p>
+                        <p class="card-text text-muted">Đăng bán các sản phẩm gỗ cũ, bàn ghế mỹ nghệ mới lên hệ thống
+                            cửa hàng.</p>
                         <a href="products/add_product.php" class="btn btn-success px-4 mt-2">
                             Vào Thêm Ngay
                         </a>
@@ -52,7 +53,8 @@ if (!isset($_SESSION["admin"])) {
                             <i class="bi bi-folder-fill"></i>
                         </div>
                         <h4 class="card-title fw-bold">Quản Lý Danh Sách</h4>
-                        <p class="card-text text-muted">Xem toàn bộ sản phẩm gỗ hiện có, thực hiện cập nhật giá, chỉnh sửa hoặc xóa bỏ.</p>
+                        <p class="card-text text-muted">Xem toàn bộ sản phẩm gỗ hiện có, thực hiện cập nhật giá, chỉnh
+                            sửa hoặc xóa bỏ.</p>
                         <a href="products/manage_products.php" class="btn btn-primary px-4 mt-2">
                             Vào Quản Lý
                         </a>
@@ -66,7 +68,7 @@ if (!isset($_SESSION["admin"])) {
                         <i class="bi bi-people" style="font-size: 2rem; color: #392ed6;"></i>
                         <h4 class="mt-2">Danh sách Users</h4>
                         <p class="text-muted">Quản lý tài khoản khách hàng, xem thông tin người đăng ký.</p>
-                        <a href="list_users.php" class="btn btn-primary">Vào Quản lý</a>
+                        <a href="../users/list_users.php" class="btn btn-primary">Vào Quản lý</a>
                     </div>
                 </div>
 
@@ -82,7 +84,7 @@ if (!isset($_SESSION["admin"])) {
 
         </div>
 
-        <div class="text-center text-muted mt-5 pt-4 border-top style=" font-size: 14px;">
+        <div class="text-center text-muted mt-5 pt-4 border-top" style="font-size: 14px; font-weight: bold">
             &copy; 2026 Đồ Gỗ 2Hand - Trang Quản Trị.
         </div>
     </div>

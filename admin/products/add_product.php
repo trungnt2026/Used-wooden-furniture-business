@@ -17,22 +17,22 @@ if (!isset($_SESSION["admin"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <style>
-        /* thêm màu nâu gỗ */
-        .btn-wood {
-            background-color: #7A4A21;
-            border-color: #7A4A21;
-            color: #fff;
-        }
+    /* thêm màu nâu gỗ */
+    .btn-wood {
+        background-color: #7A4A21;
+        border-color: #7A4A21;
+        color: #fff;
+    }
 
-        .btn-wood:hover {
-            background-color: #5C3718;
-            border-color: #5C3718;
-            color: #fff;
-        }
+    .btn-wood:hover {
+        background-color: #5C3718;
+        border-color: #5C3718;
+        color: #fff;
+    }
 
-        .text-wood {
-            color: #7A4A21 !important;
-        }
+    .text-wood {
+        color: #7A4A21 !important;
+    }
     </style>
 </head>
 
@@ -43,9 +43,11 @@ if (!isset($_SESSION["admin"])) {
             <div class="col-md-8 col-lg-6">
 
                 <div class="mb-3">
-                    <a href="../dashboard.php" class="text-decoration-none text-secondary small">
-                        <i class="bi bi-arrow-left"></i> Quay lại Dashboard
-                    </a>
+                    <button>
+                        <a href="../dashboard.php" class="text-decoration-none text-secondary small">
+                            <i class="bi bi-arrow-left"></i> Quay lại Dashboard
+                        </a>
+                    </button>
                 </div>
 
                 <div class="card shadow-sm border-0 rounded-3">
@@ -64,24 +66,17 @@ if (!isset($_SESSION["admin"])) {
                                 <label class="form-label fw-semibold text-secondary small">Tên sản phẩm gỗ</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-white text-muted"><i class="bi bi-tag"></i></span>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="name"
-                                        placeholder="Ví dụ: Tủ quần áo gỗ thông đã qua sử dụng"
-                                        required>
+                                    <input type="text" class="form-control" name="name"
+                                        placeholder="Ví dụ: Tủ quần áo gỗ thông đã qua sử dụng" required>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold text-secondary small">Giá bán (VNĐ)</label>
                                 <div class="input-group">
-                                    <span class="input-group-text bg-white text-muted"><i class="bi bi-currency-dollar"></i></span>
-                                    <input
-                                        type="number"
-                                        class="form-control"
-                                        name="price"
-                                        placeholder="Ví dụ: 3500000"
+                                    <span class="input-group-text bg-white text-muted"><i
+                                            class="bi bi-currency-dollar"></i></span>
+                                    <input type="number" class="form-control" name="price" placeholder="Ví dụ: 3500000"
                                         required>
                                 </div>
                             </div>
@@ -89,25 +84,21 @@ if (!isset($_SESSION["admin"])) {
                             <div class="mb-3">
                                 <label class="form-label fw-semibold text-secondary small">Tên file ảnh sản phẩm</label>
                                 <div class="input-group">
-                                    <span class="input-group-text bg-white text-muted"><i class="bi bi-image"></i></span>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="image"
-                                        placeholder="Ví dụ: ban_ghe_go_01.png"
-                                        required>
+                                    <span class="input-group-text bg-white text-muted"><i
+                                            class="bi bi-image"></i></span>
+                                    <input type="text" class="form-control" name="image"
+                                        placeholder="Ví dụ: ban_ghe_go_01.png" required>
                                 </div>
                                 <div class="form-text text-muted small" style="font-size: 12px;">
-                                    * Hãy đảm bảo ảnh đã được copy sẵn vào thư mục <code class="text-dark">img/</code> ngoài trang chủ.
+                                    * Hãy đảm bảo ảnh đã được copy sẵn vào thư mục <code class="text-dark">img/</code>
+                                    ngoài trang chủ.
                                 </div>
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label fw-semibold text-secondary small">Mô tả chi tiết sản phẩm</label>
-                                <textarea
-                                    class="form-control"
-                                    name="description"
-                                    rows="4"
+                                <label class="form-label fw-semibold text-secondary small">Mô tả chi tiết sản
+                                    phẩm</label>
+                                <textarea class="form-control" name="description" rows="4"
                                     placeholder="Nhập trạng thái cũ/mới, kích thước, chất liệu gỗ..."></textarea>
                             </div>
 

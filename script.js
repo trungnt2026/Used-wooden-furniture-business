@@ -26,16 +26,40 @@ function addToCart(name, price, image = '') {
 }
 
 function removeFromCart(index) {
-    cart.splice(index, 1);
+    if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?")) {
+        cart.splice(index, 1);
+        saveCart();
+        updateCart();
+        updateCartCount();
+    }
+}
+
+// Xử lý tăng giảm số lượng trực tiếp từ các nút + / -
+function changeQuantity(index, delta) {
+    if (!cart[index]) return;
+
+    let currentQty = parseInt(cart[index].quantity) || 1;
+    let newQty = currentQty + delta;
+
+    if (newQty < 1) {
+        if (confirm("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?")) {
+            cart.splice(index, 1);
+        } else {
+            cart[index].quantity = 1;
+        }
+    } else {
+        cart[index].quantity = newQty;
+    }
+
     saveCart();
-    updateCart();
+    updateCart();      
+    updateCartCount(); 
 }
 
 function updateCartCount() {
     const cartCountContainer = document.getElementById("cartCount");
     if (cartCountContainer) {
-        // Tính tổng số lượng của tất cả sản phẩm đang có trong giỏ
-        let totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        let totalCount = cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 1), 0);
         cartCountContainer.innerText = totalCount;
     }
 }
@@ -48,12 +72,13 @@ function checkout() {
     cart = []; 
     saveCart(); 
     updateCart();
+    updateCartCount();
 }
 
 // Hàm cập nhật giỏ hàng đổ vào Table Bootstrap
 function updateCart() {
     const cartItemsContainer = document.getElementById("cartItems");
-    if (!cartItemsContainer) return; // Nếu không ở trang giỏ hàng thì bỏ qua
+    if (!cartItemsContainer) return; 
 
     cartItemsContainer.innerHTML = ""; 
 
@@ -66,6 +91,8 @@ function updateCart() {
 
     cart.forEach((item, index) => {
         const row = document.createElement("tr");
+        let itemQty = parseInt(item.quantity) || 1;
+        let itemTotal = Number(item.price) * itemQty;
 
         row.innerHTML = `
             <td>
@@ -78,13 +105,17 @@ function updateCart() {
                 ${Number(item.price).toLocaleString('vi-VN')}đ
             </td>
             <td class="text-center">
-                <span class="fw-semibold">${item.quantity || 1}</span>
+                <div class="d-inline-flex align-items-center border rounded bg-white overflow-hidden shadow-sm" style="height: 32px;">
+                    <button onclick="changeQuantity(${index}, -1)" class="btn btn-link text-dark p-0 fw-bold text-decoration-none" style="width: 32px; line-height: 32px;">-</button>
+                    <span class="fw-semibold px-2 text-center" style="min-width: 30px; font-size: 14px;">${itemQty}</span>
+                    <button onclick="changeQuantity(${index}, 1)" class="btn btn-link text-dark p-0 fw-bold text-decoration-none" style="width: 32px; line-height: 32px;">+</button>
+                </div>
             </td>
             <td class="fw-bold text-wood text-nowrap">
-                ${Number(item.price * (item.quantity || 1)).toLocaleString('vi-VN')}đ
+                ${itemTotal.toLocaleString('vi-VN')}đ
             </td>
             <td class="text-center">
-                <button onclick="removeFromCart(${index})" class="btn btn-sm btn-outline-danger px-2 py-1">✕</button>
+                <button onclick="removeFromCart(${index})" class="btn btn-sm btn-outline-danger border-0">✕</button>
             </td>
         `;
         cartItemsContainer.appendChild(row);
@@ -93,19 +124,16 @@ function updateCart() {
     updateTotalPrice(); 
 }
 
-// Hàm cập nhật tổng tiền
 function updateTotalPrice() {
     const totalPriceContainer = document.getElementById("totalPrice");
     if (totalPriceContainer) {
-        let total = cart.reduce((sum, item) => sum + (Number(item.price) * (item.quantity || 1)), 0);
+        let total = cart.reduce((sum, item) => sum + (Number(item.price) * (parseInt(item.quantity) || 1)), 0);
         totalPriceContainer.innerText = total.toLocaleString('vi-VN');
     }
 }
 
 // --- CÁC ĐOẠN KHỞI TẠO ---
-
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Logic Back to top
     let mybutton = document.getElementById("backToTopBtn");
     if (mybutton) {
         window.onscroll = function() {
@@ -117,11 +145,9 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // 2. Logic giỏ hàng
     updateCart();
     updateCartCount();
 
-    // 3. Logic tìm kiếm
     let searchInput = document.getElementById("searchInput");
     let products = document.querySelectorAll(".product");
     if(searchInput) {
