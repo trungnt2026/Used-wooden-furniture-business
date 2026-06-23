@@ -9,38 +9,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <style>
-    /* Đồng bộ màu sắc thương hiệu đồ gỗ của bạn */
-    .text-wood {
-        color: #7A4A21 !important;
-    }
+        /* Đồng bộ màu sắc thương hiệu đồ gỗ của bạn */
+        .text-wood {
+            color: #7A4A21 !important;
+        }
 
-    .bg-wood {
-        background-color: #7A4A21 !important;
-        color: #fff !important;
-    }
+        .bg-wood {
+            background-color: #7A4A21 !important;
+            color: #fff !important;
+        }
 
-    .btn-wood {
-        background-color: #7A4A21;
-        border-color: #7A4A21;
-        color: #fff;
-    }
+        .btn-wood {
+            background-color: #7A4A21;
+            border-color: #7A4A21;
+            color: #fff;
+        }
 
-    .btn-wood:hover {
-        background-color: #5C3718;
-        border-color: #5C3718;
-        color: #fff;
-    }
+        .btn-wood:hover {
+            background-color: #5C3718;
+            border-color: #5C3718;
+            color: #fff;
+        }
 
-    .step-icon {
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        font-weight: bold;
-        font-size: 1.25rem;
-    }
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
     </style>
 </head>
 
@@ -148,7 +148,8 @@
     </div>
 
     <footer class="text-center text-muted py-4 bg-white border-top">
-        <small class="fw-bold">Hệ thống phân phối ĐỒ GỖ 2HAND - Đề án Thực tập chuyên ngành.</small>
+        <medium class="fw-bold">© 2026 ĐỒ GỖ 2HAND - Hệ thống nội thất gỗ cũ giá tốt
+        </medium>
     </footer>
 
 </body>
