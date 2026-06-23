@@ -120,31 +120,31 @@ $result = mysqli_query($conn, $sql);
     </div>
 </div>
 
-<!-- <div id="realtimeClock" style="position: fixed; top: 10px; left: 10px; padding: 8px; background: #33d41e; 
-                color: white; border-radius: 8px; z-index: 9999; font-size: 18px; 
+<div id="realtimeClock" style="position: fixed; top: 10px !important; left: 10px; padding: 4px; background: #33d41e; 
+                color: white; border-radius: 8px; z-index: 9999; font-size: 13px; 
                 font-weight: bold; font-family: sans-serif; pointer-events: none;">
 </div>
 
 <script>
-function updateClock() {
-    const now = new Date();
+    function updateClock() {
+        const now = new Date();
 
-    const options = {
-        weekday: 'short',
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    };
-    document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
+        const options = {
+            weekday: 'short',
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
 
-}
-updateClock();
-// Cập nhật mỗi giây
-setInterval(updateClock, 1000);
-</script> -->
+    }
+    updateClock();
+    // Cập nhật mỗi giây
+    setInterval(updateClock, 1000);
+</script>
 
 <body class="bg-light">
 

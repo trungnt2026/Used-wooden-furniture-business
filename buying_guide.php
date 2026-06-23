@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <style>
-        /* Đồng bộ màu sắc thương hiệu đồ gỗ của bạn */
         .text-wood {
             color: #7A4A21 !important;
         }

@@ -1,12 +1,9 @@
-// Khởi tạo giỏ hàng từ localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Hàm lưu giỏ hàng
 function saveCart() { 
     localStorage.setItem("cart", JSON.stringify(cart)); 
 }
 
-// --- CÁC HÀM TOÀN CỤC ---
 
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -34,7 +31,6 @@ function removeFromCart(index) {
     }
 }
 
-// Xử lý tăng giảm số lượng trực tiếp từ các nút + / -
 function changeQuantity(index, delta) {
     if (!cart[index]) return;
 
@@ -75,7 +71,6 @@ function checkout() {
     updateCartCount();
 }
 
-// Hàm cập nhật giỏ hàng đổ vào Table Bootstrap
 function updateCart() {
     const cartItemsContainer = document.getElementById("cartItems");
     if (!cartItemsContainer) return; 
@@ -107,7 +102,14 @@ function updateCart() {
             <td class="text-center">
                 <div class="d-inline-flex align-items-center border rounded bg-white overflow-hidden shadow-sm" style="height: 32px;">
                     <button onclick="changeQuantity(${index}, -1)" class="btn btn-link text-dark p-0 fw-bold text-decoration-none" style="width: 32px; line-height: 32px;">-</button>
-                    <span class="fw-semibold px-2 text-center" style="min-width: 30px; font-size: 14px;">${itemQty}</span>
+                    
+                    <input type="number" 
+                           value="${itemQty}" 
+                           min="1" 
+                           class="form-control p-0 fw-semibold text-center border-0 text-dark" 
+                           style="width: 45px; font-size: 14px; height: 100%; outline: none; box-shadow: none; -moz-appearance: textfield;"
+                           onchange="changeQuantityFromInput(${index}, this.value)">
+                    
                     <button onclick="changeQuantity(${index}, 1)" class="btn btn-link text-dark p-0 fw-bold text-decoration-none" style="width: 32px; line-height: 32px;">+</button>
                 </div>
             </td>
@@ -132,7 +134,6 @@ function updateTotalPrice() {
     }
 }
 
-// --- CÁC ĐOẠN KHỞI TẠO ---
 document.addEventListener("DOMContentLoaded", function () {
     let mybutton = document.getElementById("backToTopBtn");
     if (mybutton) {
@@ -160,3 +161,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+function changeQuantityFromInput(index, value) {
+    if (!cart[index]) return;
+
+    let newQty = parseInt(value);
+
+    if (isNaN(newQty) || newQty < 1) {
+        alert("Số lượng sản phẩm phải lớn hơn hoặc bằng 1!");
+        updateCart(); 
+        return;
+    }
+
+    cart[index].quantity = newQty;
+
+    saveCart();
+    updateCart();      
+    updateCartCount(); 
+}

@@ -53,13 +53,10 @@ $result = mysqli_query($conn, $sql);
         }
 
         updateClock();
-        // Cập nhật mỗi giây
         setInterval(updateClock, 1000);
 
-        // tạo nút scroll to top nếu kéo quá sâu xuống dưới
         let mybutton = document.getElementById("backToTopBtn");
 
-        // Khi người dùng cuộn xuống 200px từ đỉnh trang, hiện nút
         window.onscroll = function() {
             let mybutton = document.getElementById("backToTopBtn");
             if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -69,11 +66,10 @@ $result = mysqli_query($conn, $sql);
             }
         };
 
-        // Khi người dùng bấm nút, quay về đầu trang
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth' // Cuộn mượt mà
+                behavior: 'smooth'
             });
         }
     </script>
@@ -85,19 +81,15 @@ $result = mysqli_query($conn, $sql);
             left: 0 !important;
             width: 100% !important;
             height: 60px !important;
-            /* Chiều cao nút */
             z-index: 9999 !important;
-            /* Xóa bỏ mọi thuộc tính transform, transition gây nhảy */
             transform: none !important;
             transition: background-color 0.3s ease !important;
         }
 
         .btn-scroll-top:hover {
             background-color: #442e28;
-            /* Màu đậm hơn khi di chuột vào */
         }
 
-        /* Tùy chỉnh icon và chữ */
         .btn-scroll-top i {
             display: none;
             position: fixed;
@@ -105,13 +97,11 @@ $result = mysqli_query($conn, $sql);
             left: 0;
             width: 100%;
             height: 50px;
-            /* Chiều cao cố định */
             background-color: #5D4037;
             color: #ffffff;
             border: none;
             cursor: pointer;
             z-index: 999;
-            /* Luôn nằm trên footer */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -128,7 +118,6 @@ $result = mysqli_query($conn, $sql);
 
         footer {
             padding-bottom: 60px;
-            /* Bằng chiều cao của nút + một chút dư */
             text-align: center;
             position: relative;
             z-index: 1;
@@ -138,7 +127,9 @@ $result = mysqli_query($conn, $sql);
     <header>
         <h1>ĐỒ GỖ 2HAND</h1>
         <nav>
-            <a href="#">Trang chủ</a>
+            <a href="#" onclick="window.location.reload(); return false;">
+                Trang chủ
+            </a>
             <a href="products.php">Sản phẩm</a>
             <a href="cart.php" class="cart-link">
                 <i class="bi bi-cart4"></i>
