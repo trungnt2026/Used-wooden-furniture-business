@@ -12,63 +12,63 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url("../img/bg_admin.jpg");
-        }
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("../img/bg_admin.jpg");
+    }
 
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("../img/bg_admin.jpg");
-            background-size: cover;
-            background-position: center;
-            filter: blur(2px);
-            z-index: -1;
-            transform: scale(1.1);
-        }
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../img/bg_admin.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: blur(2px);
+        z-index: -1;
+        transform: scale(1.1);
+    }
 
-        .toggle-password {
-            position: absolute;
-            right: 25px;
-            top: 10px;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-            font-size: 18px;
-            z-index: 10;
-        }
+    .toggle-password {
+        position: absolute;
+        right: 25px;
+        top: 10px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        font-size: 18px;
+        z-index: 10;
+    }
 
-        .form-control {
-            padding-right: 40px !important;
-        }
+    .form-control {
+        padding-right: 40px !important;
+    }
     </style>
 </head>
 
 
 <script>
-    function togglePassword() {
+function togglePassword() {
 
-        const passwordField = document.querySelector('input[name="password"]');
-        const toggleIcon = document.querySelector('.toggle-password');
+    const passwordField = document.querySelector('input[name="password"]');
+    const toggleIcon = document.querySelector('.toggle-password');
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text"; // Hiển thị mật khẩu
-            toggleIcon.innerText = "👁️‍🗨️"; // Đổi icon sang dạng mắt bị gạch (tùy chọn)
-        } else {
-            passwordField.type = "password";
-            toggleIcon.innerText = "👁️";
-        }
+    if (passwordField.type === "password") {
+        passwordField.type = "text"; // Hiển thị mật khẩu
+        toggleIcon.innerText = "👁️‍🗨️"; // Đổi icon sang dạng mắt bị gạch (tùy chọn)
+    } else {
+        passwordField.type = "password";
+        toggleIcon.innerText = "👁️";
     }
+}
 </script>
 
 <body class="bg-light">
@@ -84,15 +84,17 @@ session_start();
                                 <i class="bi bi-person-circle"></i>
                             </div>
                             <h3 class="fw-bold text-dark m-0">Đăng Nhập Admin</h3>
-                            <small class="text-muted" style="color: var(--wood-medium); font-weight:bolder">Hệ thống quản lý - Đồ Gỗ 2Hand</small>
+                            <small class="text-muted" style="color: var(--wood-medium); font-weight:bolder">Hệ thống
+                                quản lý - Đồ Gỗ 2Hand</small>
                         </div>
 
                         <?php if (isset($_SESSION["login_error"])) { ?>
-                            <div class="alert alert-danger alert-dismissible fade show small py-2 mb-3" role="alert">
-                                <i class="bi bi-exclamation-circle-fill me-1"></i>
-                                <?= $_SESSION["login_error"] ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="padding: 0.75rem 0.75rem;"></button>
-                            </div>
+                        <div class="alert alert-danger alert-dismissible fade show small py-2 mb-3" role="alert">
+                            <i class="bi bi-exclamation-circle-fill me-1"></i>
+                            <?= $_SESSION["login_error"] ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                                style="padding: 0.75rem 0.75rem;"></button>
+                        </div>
                         <?php
                             // khi user nhập sai, back lại login + báo lỗi
                             unset($_SESSION["login_error"]);
@@ -107,12 +109,8 @@ session_start();
                                     <span class="input-group-text bg-white border-end-0 text-muted">
                                         <i class="bi bi-person"></i>
                                     </span>
-                                    <input
-                                        type="text"
-                                        class="form-control border-start-0 ps-0"
-                                        name="username"
-                                        placeholder="Nhập tài khoản admin..."
-                                        required>
+                                    <input type="text" class="form-control border-start-0 ps-0" name="username"
+                                        placeholder="Nhập tài khoản admin..." required>
                                 </div>
                             </div>
 
@@ -122,16 +120,16 @@ session_start();
                                     <span class="input-group-text bg-white border-end-0 text-muted">
                                         <i class="bi bi-lock"></i>
                                     </span>
-                                    <input
-                                        type="password"
-                                        class="form-control border-start-0 ps-0"
-                                        name="password"
-                                        placeholder="Nhập mật khẩu..."
-                                        required>
+                                    <input type="password" class="form-control border-start-0 ps-0" name="password"
+                                        placeholder="Nhập mật khẩu..." required>
 
                                     <span class="toggle-password" onclick="togglePassword()">
                                         👁️
                                     </span>
+                                </div>
+                                <div class="text-end mb-3">
+                                    <a href="forgot_password.php" class="text-decoration-none small text-muted">Quên mật
+                                        khẩu?</a>
                                 </div>
                             </div>
 
@@ -141,7 +139,8 @@ session_start();
 
                         </form>
                         <div class="text-center mt-3">
-                            <a href="../index.php" class="text-decoration-none text-muted small" style="color: var(--wood-medium); font-weight:bolder">
+                            <a href="../index.php" class="text-decoration-none text-muted small"
+                                style="color: var(--wood-medium); font-weight:bolder">
                                 ← Quay lại Trang Chủ Cửa Hàng
                             </a>
                         </div>

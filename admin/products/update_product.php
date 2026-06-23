@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 require_once "../../config.php";
 
 if (!isset($_SESSION["admin"])) {
@@ -10,17 +8,19 @@ if (!isset($_SESSION["admin"])) {
 }
 
 $id = (int)$_POST["id"];
+$name = mysqli_real_escape_string($conn, $_POST["name"]);
+$price = (int)$_POST["price"];
+$quantity = (int)$_POST["quantity"]; // Nhận số lượng từ form edit
+$image = mysqli_real_escape_string($conn, $_POST["image"]);
+$description = mysqli_real_escape_string($conn, $_POST["description"]);
 
-$name = $_POST["name"];
-$price = $_POST["price"];
-$image = $_POST["image"];
-$description = $_POST["description"];
-
+// Thêm quantity=$quantity vào câu lệnh SQL UPDATE
 $sql = "
 UPDATE products
 SET
 name='$name',
 price='$price',
+quantity=$quantity,
 image='$image',
 description='$description'
 WHERE id=$id

@@ -73,6 +73,16 @@ if (!isset($_SESSION["admin"])) {
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold text-secondary small">Giá bán (VNĐ)</label>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold text-secondary small">Số lượng nhập kho</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-secondary"><i
+                                                class="bi bi-boxes"></i></span>
+                                        <input type="number" name="quantity" class="form-control" value="10" min="0"
+                                            required>
+                                    </div>
+                                </div>
                                 <div class="input-group">
                                     <span class="input-group-text bg-white text-muted"><i
                                             class="bi bi-currency-dollar"></i></span>
