@@ -11,6 +11,8 @@
             --wood-dark: #5D4037;
             --wood-medium: #8D6E63;
             --wood-light: #D7CCC8;
+            --wood-alert-bg: #EFEBE9;
+            /* Thêm màu nền gỗ nhạt cho thông báo */
         }
 
         body {
@@ -37,17 +39,16 @@
             z-index: -1;
         }
 
-
         .contact-box {
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 40px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border-left: 10px solid var(--wood-dark);
-            align-items: center;
         }
 
-        h2 {
+        h2,
+        h3 {
             color: var(--wood-dark);
             font-weight: bold;
         }
@@ -74,21 +75,23 @@
 
         .form-check-input {
             border: 2px solid var(--wood-dark);
-            /* Tăng độ dày viền lên 2px */
             width: 1.2em;
-            /* tăng kích thước radio */
             height: 1.2em;
             cursor: pointer;
         }
 
-        /* Làm nổi bật ô input khi bị lỗi */
-        .form-control:invalid {
-            border: 2px solid #dc3545;
+        /* Khung thông báo thành công màu gỗ */
+        .success-box {
+            background-color: var(--wood-alert-bg);
+            border: 2px dashed var(--wood-medium);
+            border-radius: 10px;
+            padding: 25px;
+            color: var(--wood-dark);
         }
 
-        /* Tùy chỉnh thông báo lỗi của trình duyệt */
-        .form-control:invalid:focus {
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        .success-box icon {
+            font-size: 3rem;
+            color: var(--wood-dark);
         }
     </style>
 </head>
@@ -109,9 +112,9 @@
 
                     <hr class="my-4">
 
-                    <form>
+                    <form id="contactForm">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Họ và tên" required>
+                            <input type="text" id="fullname" class="form-control" placeholder="Họ và tên" required>
                         </div>
                         <div class="mb-3">
                             <input type="tel" class="form-control"
@@ -144,10 +147,16 @@
                                 <input class="form-check-input" type="radio" name="userRole" id="roleConsignor" value="consignor">
                                 <label class="form-check-label" for="roleConsignor">Người ký gửi</label>
                             </div>
-
                         </div>
-                        <button type="button" class="btn btn-custom w-100">Gửi thông tin</button>
+                        <button type="submit" class="btn btn-custom w-100">Gửi thông tin</button>
                     </form>
+
+                    <div id="successMessage" class="success-box text-center d-none my-4">
+                        <div class="mb-3" style="font-size: 3rem;">📦</div>
+                        <h3 class="mb-3">Đăng Ký Thành Công!</h3>
+                        <p class="fs-5">Cảm ơn <strong id="displayUser" class="text-decoration-underline"></strong> đã liên hệ với Đồ Gỗ 2Hand.</p>
+                        <p class="mb-0">Yêu cầu của bạn đang được xử lý. Ban quản trị sẽ chủ động liên hệ lại với bạn trong vòng <strong>48 giờ</strong> tới.</p>
+                    </div>
 
                     <div class="mt-3 text-center">
                         <a href="index.php" class="text-decoration-none" style="color: var(--wood-medium); font-weight:bolder">← Quay lại trang chủ</a>
@@ -158,6 +167,23 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Ngăn trang web tải lại (Reload)
+            e.preventDefault();
+
+            // Lấy tên người dùng vừa nhập
+            const username = document.getElementById('fullname').value;
+
+            // Gán tên vào khung thông báo
+            document.getElementById('displayUser').innerText = username;
+
+            // Ẩn form đi và Hiển thị khung thông báo thành công màu gỗ
+            document.getElementById('contactForm').classList.add('d-none');
+            document.getElementById('successMessage').classList.remove('d-none');
+        });
+    </script>
 </body>
 
 </html>
