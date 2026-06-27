@@ -37,91 +37,91 @@ $result = mysqli_query($conn, $sql);
                 font-weight: bold; font-family: sans-serif; pointer-events: none;">
     </div>
     <script>
-        function updateClock() {
-            const now = new Date();
+    function updateClock() {
+        const now = new Date();
 
-            const options = {
-                weekday: 'short',
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
-        }
-
-        updateClock();
-        setInterval(updateClock, 1000);
-
-        let mybutton = document.getElementById("backToTopBtn");
-
-        window.onscroll = function() {
-            let mybutton = document.getElementById("backToTopBtn");
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                mybutton.style.display = "flex";
-            } else {
-                mybutton.style.display = "none";
-            }
+        const options = {
+            weekday: 'short',
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
         };
+        document.getElementById('realtimeClock').innerText = now.toLocaleString('vi-VN', options);
+    }
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    let mybutton = document.getElementById("backToTopBtn");
+
+    window.onscroll = function() {
+        let mybutton = document.getElementById("backToTopBtn");
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            mybutton.style.display = "flex";
+        } else {
+            mybutton.style.display = "none";
         }
+    };
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
     </script>
 
     <style>
-        .btn-scroll-top {
-            position: fixed !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 60px !important;
-            z-index: 9999 !important;
-            transform: none !important;
-            transition: background-color 0.3s ease !important;
-        }
+    .btn-scroll-top {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 60px !important;
+        z-index: 9999 !important;
+        transform: none !important;
+        transition: background-color 0.3s ease !important;
+    }
 
-        .btn-scroll-top:hover {
-            background-color: #442e28;
-        }
+    .btn-scroll-top:hover {
+        background-color: #442e28;
+    }
 
-        .btn-scroll-top i {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background-color: #5D4037;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background-color 0.3s ease;
-        }
+    .btn-scroll-top i {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background-color: #5D4037;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transition: background-color 0.3s ease;
+    }
 
-        .btn-scroll-top span {
-            font-size: 16px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+    .btn-scroll-top span {
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
 
-        footer {
-            padding-bottom: 60px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
+    footer {
+        padding-bottom: 60px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
     </style>
 
     <header>
@@ -141,23 +141,23 @@ $result = mysqli_query($conn, $sql);
 
 
             <?php if (isset($_SESSION["user_id"])) { ?>
-                <span>
-                    Xin chào,
-                    <?= $_SESSION["fullname"] ?>
-                </span>
+            <span>
+                Xin chào,
+                <?= $_SESSION["fullname"] ?>
+            </span>
 
-                <a href="users/logout.php">
-                    Đăng xuất
-                </a>
+            <a href="users/logout.php">
+                Đăng xuất
+            </a>
 
             <?php } else { ?>
-                <a href="users/login.php">
-                    Đăng nhập
-                </a>
+            <a href="users/login.php">
+                Đăng nhập
+            </a>
 
-                <a href="users/register.php">
-                    Đăng ký
-                </a>
+            <a href="users/register.php">
+                Đăng ký
+            </a>
 
             <?php } ?>
         </nav>
@@ -180,22 +180,22 @@ $result = mysqli_query($conn, $sql);
 
         <div class="product-list">
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="product" data-name="<?= strtolower($row['name']) ?>">
-                    <img src="./img/<?= $row['image'] ?>" alt="<?= $row['name'] ?>">
-                    <h3>
-                        <?= $row['name'] ?>
-                    </h3>
-                    <p>
-                        <?= number_format($row['price']) ?>đ
-                    </p>
-                    <button onclick="addToCart(
+            <div class="product" data-name="<?= strtolower($row['name']) ?>">
+                <img src="./img/<?= $row['image'] ?>" alt="<?= $row['name'] ?>">
+                <h3>
+                    <?= $row['name'] ?>
+                </h3>
+                <p>
+                    <?= number_format($row['price']) ?>đ
+                </p>
+                <button onclick="addToCart(
                 '<?= $row['name'] ?>',
                 <?= $row['price'] ?>,
                 './img/<?= $row['image'] ?>'
             )">
-                        Mua ngay
-                    </button>
-                </div>
+                    Mua ngay
+                </button>
+            </div>
             <?php } ?>
         </div>
     </section>
@@ -205,8 +205,12 @@ $result = mysqli_query($conn, $sql);
             <div class="footer-col">
                 <h3>ĐỒ GỖ 2HAND</h3>
                 <p><strong>Địa chỉ:</strong> Quận 7, TP. Hồ Chí Minh</p>
-                <p><i class="bi bi-telephone-inbound-fill"></i><strong> Hotline:</strong> 1900.8888</p>
-                <p><i class="bi bi-envelope-at-fill"></i><strong> Email:</strong> admin@org.json</p>
+                <p><i class="bi bi-telephone-inbound-fill"></i><strong> Hotline:</strong> <a
+                        href="tel:19008888">1900.8888</a>
+                </p>
+                <p><i class="bi bi-envelope-at-fill"></i><strong> Email: </strong> <a
+                        href="mailto: admin@org.json">admin@org.json</a>
+                </p>
             </div>
 
             <div class="footer-col">
