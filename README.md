@@ -11,7 +11,7 @@
 
    <br><br>
 
-# THÔNG TIN NGƯỜI THỰC HIỆN
+## THÔNG TIN NGƯỜI THỰC HIỆN
 
 Sinh viên thực hiện: Nguyễn Thành Trung<br>
 Mã sinh viên: 170122293<br>
