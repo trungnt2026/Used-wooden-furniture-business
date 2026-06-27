@@ -13,9 +13,9 @@
 
 # THÔNG TIN NGƯỜI THỰC HIỆN
 
-Sinh viên thực hiện: Nguyễn Thành Trung
-Mã sinh viên: 170122293
-Lớp: DX22TT8016
-Số điện thoại/Zalo: `0816.221.299`
-Email: `170122293@rdi.edu.vn`
-Đại học Trà Vinh.
+Sinh viên thực hiện: Nguyễn Thành Trung<br>
+Mã sinh viên: 170122293<br>
+Lớp: DX22TT8016<br>
+Số điện thoại/Zalo: `0816.221.299`<br>
+Email: `170122293@rdi.edu.vn`<br>
+Đại học Trà Vinh.<br>
